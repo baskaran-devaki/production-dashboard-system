@@ -14,8 +14,18 @@ import { ReportDialog } from "@/components/report/ReportDialog";
 import { FileText, RefreshCw, Wifi, WifiOff } from "lucide-react";
 import { toast } from "sonner";
 import { MobileProductionDashboard } from "@/components/mobile/MobileProductionDashboard";
+import { isValid, parseISO, format } from "date-fns";
 
 export const Route = createFileRoute("/")({
+  validateSearch: (search: Record<string, unknown>): { mobileDate?: string; mobileShift?: 1 | 2 | 3 } => {
+    const value = typeof search.mobileDate === "string" ? search.mobileDate : "";
+    const date = parseISO(value);
+    const shift = Number(search.mobileShift);
+    return {
+      mobileDate: /^\d{4}-\d{2}-\d{2}$/.test(value) && isValid(date) && format(date, "yyyy-MM-dd") === value ? value : undefined,
+      mobileShift: shift === 1 || shift === 2 || shift === 3 ? shift : undefined,
+    };
+  },
   head: () => ({
     meta: [
       { title: "PPMS Production Dashboard · JAI ENGINEERING WORKS" },
@@ -51,6 +61,7 @@ function Dashboard() {
     <>
       <MobileProductionDashboard
         entries={entries}
+        loading={loading}
         businessDate={bDate}
         online={online}
         isSignedIn={!!user}
@@ -96,17 +107,17 @@ function Dashboard() {
         </div>
       </section>
 
-      <ReportDialog
-        open={reportOpen}
-        onOpenChange={setReportOpen}
-        generatedBy={user?.email ?? "Guest"}
-      />
 
 
       <footer className="text-center text-xs text-[color:var(--muted-foreground)] pt-2 pb-6">
         © {new Date().getFullYear()} JAI ENGINEERING WORKS · Unit-1 - Nazarathpet
       </footer>
       </main>
+      <ReportDialog
+        open={reportOpen}
+        onOpenChange={setReportOpen}
+        generatedBy={user?.email ?? "Guest"}
+      />
     </>
   );
 }

@@ -14,7 +14,14 @@ const logoAsset = { url: logoUrl };
 export const Route = createFileRoute("/tv")({
   ssr: false,
   component: TvDisplay,
-  head: () => ({ meta: [{ title: "JAI ENGINEERING WORKS TV Display · Live Production" }] }),
+  head: () => ({ meta: [
+    { title: "JAI ENGINEERING WORKS TV Display · Live Production" },
+    { name: "description", content: "Live JAI ENGINEERING WORKS PPMS factory production display and shift performance." },
+    { property: "og:title", content: "JAI ENGINEERING WORKS TV Display · Live Production" },
+    { property: "og:description", content: "Live JAI ENGINEERING WORKS PPMS factory production display and shift performance." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary" },
+  ] }),
 });
 
 function TvDisplay() {
@@ -170,7 +177,7 @@ const MetricCard = ({
               JAI ENGINEERING WORKS
             </h1>
             <p className={`text-[color:var(--cyan)] tracking-[0.2em] uppercase font-bold truncate ${F.subtitle}`}>
-              Unit-1 - Nazarathpet
+              Plant II · ED Plant · Irungattukottai
             </p>
           </div>
         </div>

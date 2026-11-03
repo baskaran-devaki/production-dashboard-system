@@ -10,7 +10,15 @@ import {
 } from "@/lib/admin.functions";
 
 export const Route = createFileRoute("/_authenticated/super")({
-  head: () => ({ meta: [{ title: "Super Admin · JAI ENGINEERING WORKS" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [
+    { title: "Super Admin · Phorotech" },
+    { name: "description", content: "JAI ENGINEERING WORKS PPMS account access, plant administration, and security." },
+    { property: "og:title", content: "Super Admin · Phorotech" },
+    { property: "og:description", content: "JAI ENGINEERING WORKS PPMS account access, plant administration, and security." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary" },
+    { name: "robots", content: "noindex" },
+  ] }),
   component: SuperAdminPanel,
 });
 

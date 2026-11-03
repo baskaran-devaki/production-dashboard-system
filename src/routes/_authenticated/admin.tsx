@@ -12,6 +12,11 @@ export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
     meta: [
       { title: "Admin Panel · JAI ENGINEERING WORKS" },
+      { name: "description", content: "Authorized production management in JAI ENGINEERING WORKS PPMS." },
+      { property: "og:title", content: "Admin Panel · JAI ENGINEERING WORKS" },
+      { property: "og:description", content: "Authorized production management in JAI ENGINEERING WORKS PPMS." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
       { name: "robots", content: "noindex" },
     ],
   }),

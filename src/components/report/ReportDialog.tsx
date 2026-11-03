@@ -10,12 +10,13 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import { Download, Eye, FileSpreadsheet, Loader2 } from "lucide-react";
+import { Download, Eye, FileSpreadsheet, Loader2, Share2 } from "lucide-react";
 import { currentMonthKey, monthNameFromKey } from "@/lib/production";
 import { buildReport, monthOptions, monthRange } from "@/lib/report";
-import { generateReportPDF } from "@/lib/report-pdf";
+import { buildReportPDF, generateReportPDF } from "@/lib/report-pdf";
 import { generateReportExcel } from "@/lib/report-excel";
 import { fetchAllProductionEntries } from "@/lib/production-data";
+import { downloadBlob } from "@/lib/download-file";
 import { ReportView } from "./ReportView";
 
 export function ReportDialog({
@@ -32,7 +33,7 @@ export function ReportDialog({
   const [month, setMonth] = useState(currentMonthKey());
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
-  const [busy, setBusy] = useState<null | "view" | "pdf" | "excel">(null);
+  const [busy, setBusy] = useState<null | "view" | "pdf" | "excel" | "share">(null);
   const [viewing, setViewing] = useState(false);
   const [viewReport, setViewReport] = useState<ReturnType<typeof buildReport> | null>(null);
 
@@ -59,6 +60,10 @@ export function ReportDialog({
     return buildReport(periodEntries, p.from, p.to, p.label);
   }
 
+  function pdfFileName(from: string, to: string) {
+    return `PPMS-Production-Report-${from}_to_${to}.pdf`;
+  }
+
   async function handlePdf() {
     const p = resolvePeriod();
     if (!p) return;
@@ -69,6 +74,37 @@ export function ReportDialog({
     } catch (e) {
       console.error(e);
       toast.error("Could not generate PDF");
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  async function handleShare() {
+    const p = resolvePeriod();
+    if (!p) return;
+    setBusy("share");
+    try {
+      const report = await fetchReport(p);
+      const blob = await buildReportPDF(report, withHourly === "with");
+      const file = new File([blob], pdfFileName(report.from, report.to), {
+        type: "application/pdf",
+      });
+      const nav = navigator as Navigator & { canShare?: (data?: ShareData) => boolean };
+      if (nav.canShare?.({ files: [file] })) {
+        await navigator.share({
+          files: [file],
+          title: "PPMS Production Report",
+          text: `Production report ${p.label}`,
+        });
+      } else {
+        downloadBlob(blob, file.name);
+        toast.success("PDF downloaded");
+      }
+    } catch (e) {
+      // User closed the share sheet — not an error.
+      if (e instanceof DOMException && e.name === "AbortError") return;
+      console.error(e);
+      toast.error("Could not share PDF");
     } finally {
       setBusy(null);
     }
@@ -195,18 +231,30 @@ export function ReportDialog({
               </RadioGroup>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
               <button
                 onClick={handleView}
                 disabled={busy !== null}
-                className="rounded-xl border border-[color:var(--border)] px-3 py-2 text-sm inline-flex items-center justify-center gap-2 hover:bg-[oklch(0.78_0.14_82/10%)] transition"
+                className="rounded-xl border border-[color:var(--border)] px-3 py-2 text-sm inline-flex items-center justify-center gap-2 hover:bg-[oklch(0.78_0.14_82/10%)] transition disabled:opacity-50"
               >
                 {busy === "view" ? <Loader2 className="h-4 w-4 animate-spin" /> : <Eye className="h-4 w-4" />} View Report
               </button>
               <button
+                onClick={handleShare}
+                disabled={busy !== null}
+                className="btn-gold rounded-xl px-3 py-2 text-sm inline-flex items-center justify-center gap-2 disabled:opacity-50 sm:hidden"
+              >
+                {busy === "share" ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : (
+                  <Share2 className="h-4 w-4" />
+                )}{" "}
+                Share PDF
+              </button>
+              <button
                 onClick={handleExcel}
                 disabled={busy !== null}
-                className="rounded-xl border border-[color:var(--border)] px-3 py-2 text-sm inline-flex items-center justify-center gap-2 hover:bg-[oklch(0.78_0.14_82/10%)] transition disabled:opacity-50"
+                className="text-sm items-center justify-center gap-2 disabled:opacity-50 hidden sm:inline-flex rounded-xl border border-[color:var(--border)] px-3 py-2 hover:bg-[oklch(0.78_0.14_82/10%)] transition"
               >
                 {busy === "excel" ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
@@ -218,7 +266,7 @@ export function ReportDialog({
               <button
                 onClick={handlePdf}
                 disabled={busy !== null}
-                className="btn-gold rounded-xl px-3 py-2 text-sm inline-flex items-center justify-center gap-2 disabled:opacity-50"
+                className="btn-gold text-sm items-center justify-center gap-2 disabled:opacity-50 hidden sm:inline-flex rounded-xl px-3 py-2"
               >
                 {busy === "pdf" ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
