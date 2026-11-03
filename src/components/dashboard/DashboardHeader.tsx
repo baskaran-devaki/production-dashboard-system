@@ -24,14 +24,14 @@ export function DashboardHeader({ isAdmin, isSignedIn, isSuperAdmin = false }: {
         <div className="grid grid-cols-[minmax(0,1fr)_auto] gap-4 items-start">
           <div className="min-w-0 flex items-start gap-4">
             <div className="shrink-0 h-16 w-16 sm:h-20 sm:w-20 rounded-2xl overflow-hidden bg-white p-1.5 border border-[oklch(0.78_0.14_82/30%)]">
-              <img src={logoAsset.url} alt="Phorotech Surfin India" className="h-full w-full object-contain" />
+              <img src={logoAsset.url} alt="jai engineering works" className="h-full w-full object-contain" />
             </div>
             <div className="min-w-0">
               <h1 className="font-[family-name:var(--font-display)] title-text text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-wide">
-                PHOROTECH SURFIN INDIA PVT LTD
+                JAI ENGINEERING WORKS
               </h1>
               <p className="mt-2 text-sm sm:text-base md:text-lg text-[color:var(--cyan)] font-bold tracking-[0.25em] uppercase truncate">
-                Plant II · ED Plant · Irungattukottai
+                Unit-1 - Nazarathpet
               </p>
             </div>
           </div>
