@@ -137,8 +137,8 @@ export function MobileProductionDashboard({
         <div className="flex min-w-0 items-center gap-3">
           <img src={logoAsset.url} alt="Phorotech Surfin India" className="size-11 shrink-0 rounded-md bg-background object-contain p-0.5" />
           <div className="min-w-0">
-            <p className="truncate text-sm font-extrabold text-foreground">PHOROTECH SURFIN INDIA</p>
-            <p className="truncate text-xs font-semibold text-mobile-accent">Plant II - ED - PPMS</p>
+            <p className="truncate text-sm font-extrabold text-foreground">JAI ENGINEERING WORKS</p>
+            <p className="truncate text-xs font-semibold text-mobile-accent">Unit-1 </p>
           </div>
         </div>
         <span className={`size-2.5 shrink-0 rounded-full ${online ? "bg-success" : "bg-danger"}`} aria-label={online ? "Network online" : "Network offline"} />
