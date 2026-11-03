@@ -18,10 +18,10 @@ import { MobileProductionDashboard } from "@/components/mobile/MobileProductionD
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "PPMS Production Dashboard · Phorotech Surfin India" },
-      { name: "description", content: "Live production performance, shift totals, hourly output, reports, and plant network status for Phorotech Surfin India." },
-      { property: "og:title", content: "PPMS Production Dashboard · Phorotech Surfin India" },
-      { property: "og:description", content: "Live production performance and plant monitoring for Phorotech Surfin India." },
+      { title: "PPMS Production Dashboard · JAI ENGINEERING WORKS" },
+      { name: "description", content: "Live production performance, shift totals, hourly output, reports, and plant network status for JAI ENGINEERING WORKS." },
+      { property: "og:title", content: "PPMS Production Dashboard · JAI ENGINEERING WORKS" },
+      { property: "og:description", content: "Live production performance and plant monitoring for JAI ENGINEERING WORKS." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
@@ -104,7 +104,7 @@ function Dashboard() {
 
 
       <footer className="text-center text-xs text-[color:var(--muted-foreground)] pt-2 pb-6">
-        © {new Date().getFullYear()} Phorotech Surfin India Pvt Ltd · Plant II · ED Plant · Irungattukottai
+        © {new Date().getFullYear()} JAI ENGINEERING WORKS · Unit-1 - Nazarathpet
       </footer>
       </main>
     </>

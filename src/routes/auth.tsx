@@ -9,8 +9,8 @@ const logoAsset = { url: logoUrl };
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Admin Login · Phorotech ED Plant" },
-      { name: "description", content: "Secure admin sign-in for Phorotech Surfin ED Plant production dashboard." },
+      { title: "Admin Login · JAI ENGINEERING WORKS" },
+      { name: "description", content: "Secure admin sign-in for JAI ENGINEERING WORKS ED Plant production dashboard." },
       { name: "robots", content: "noindex" },
     ],
   }),
@@ -66,9 +66,9 @@ function AuthPage() {
         </Link>
         <div className="glass-gold rounded-3xl p-6 sm:p-8 gold-glow">
           <div className="flex flex-col items-center text-center">
-            <img src={logoAsset.url} alt="Phorotech Surfin India" className="h-16 w-16 rounded-md object-contain bg-background" />
+            <img src={logoAsset.url} alt="JAI ENGINEERING WORKS" className="h-16 w-16 rounded-md object-contain bg-background" />
             <h1 className="display gold-text text-2xl sm:text-3xl mt-3">PPMS Sign In</h1>
-            <p className="text-xs text-[color:var(--muted-foreground)] mt-1">Phorotech · ED Plant · Irungattukottai</p>
+            <p className="text-xs text-[color:var(--muted-foreground)] mt-1">JAI ENGINEERING WORKS · Unit-1 - Nazarathpet</p>
           </div>
 
           <form onSubmit={handleSubmit} className="mt-6 space-y-4">

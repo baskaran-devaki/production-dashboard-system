@@ -12,7 +12,7 @@ export async function exportDowntimePDF(records: DowntimeRecord[], period: strin
   })).catch(() => null);
   if (image) { try { doc.addImage(image, "JPEG", 36, 25, 46, 46); } catch { /* continue without logo */ } }
   doc.setFont("helvetica", "bold"); doc.setFontSize(14); doc.setTextColor(128, 97, 20);
-  doc.text("PHOROTECH SURFIN INDIA PVT LTD", 100, 46);
+  doc.text("JAI ENGINEERING WORKS", 100, 46);
   doc.setFontSize(11); doc.setTextColor(30, 30, 30); doc.text("DOWNTIME REPORT", 100, 64);
   doc.setFontSize(9); doc.text(`Period: ${period}  |  Incidents: ${records.length}  |  Total: ${formatDuration(records.reduce((sum, record) => sum + downtimeMinutes(record), 0))}`, 36, 96);
   autoTable(doc, {
@@ -29,7 +29,7 @@ export async function exportDowntimePDF(records: DowntimeRecord[], period: strin
 }
 
 export async function exportDowntimeExcel(records: DowntimeRecord[], period: string) {
-  const workbook = new ExcelJS.Workbook(); workbook.creator = "Phorotech PPMS";
+  const workbook = new ExcelJS.Workbook(); workbook.creator = "JAI ENGINEERING WORKS PPMS";
   const sheet = workbook.addWorksheet("Downtime", { pageSetup: { orientation: "landscape", paperSize: 9 } });
   sheet.columns = [
     { header: "Business Date", key: "date", width: 16 }, { header: "Shift", key: "shift", width: 10 },
@@ -39,7 +39,7 @@ export async function exportDowntimeExcel(records: DowntimeRecord[], period: str
     { header: "Action Taken", key: "action", width: 36 }, { header: "Parts / Material", key: "parts", width: 28 },
     { header: "Status", key: "status", width: 20 }, { header: "Duration (min)", key: "duration", width: 18 },
   ];
-  sheet.insertRow(1, ["PHOROTECH SURFIN INDIA PVT LTD · DOWNTIME REPORT"]); sheet.mergeCells("A1:L1");
+  sheet.insertRow(1, ["JAI ENGINEERING WORKS · DOWNTIME REPORT"]); sheet.mergeCells("A1:L1");
   sheet.getCell("A1").font = { bold: true, size: 15, color: { argb: "FF806114" } }; sheet.getRow(1).height = 27;
   sheet.insertRow(2, [`Reporting Period: ${period} · ${records.length} incidents`]); sheet.mergeCells("A2:L2");
   const header = sheet.getRow(3);

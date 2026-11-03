@@ -25,8 +25,8 @@ export async function generateReportExcel(
   const lastCol = String.fromCharCode(64 + cols);
 
   const titleRows = [
-    "PHOROTECH SURFIN INDIA PVT LTD",
-    "Plant-II | ED Plant | Irungattukottai",
+    "JAI ENGINEERING WORKS",
+    "Unit-1 - Nazarathpet",
     "MONTHLY PRODUCTION REPORT",
     `Reporting Period: ${report.periodLabel}`,
   ];

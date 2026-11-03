@@ -16,7 +16,7 @@ export function SplashScreen() {
   return (
     <div className={`splash-screen ${phase === "fade" ? "splash-fade" : ""}`} role="status" aria-label="Loading PPMS">
       <div className="splash-logo-wrap">
-        <img src={logoAsset.url} alt="Phorotech Surfin India" className="splash-logo" />
+        <img src={logoAsset.url} alt="JAI ENGINEERING WORKS" className="splash-logo" />
       </div>
       <p className="splash-title">PPMS</p>
       <p className="splash-subtitle">Production Performance Monitoring System</p>

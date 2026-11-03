@@ -95,7 +95,7 @@ export function MobileProductionDashboard({
   async function shareTvLink() {
     if (navigator.share) {
       try {
-        await navigator.share({ title: "Phorotech PPMS TV Mode", url: tvUrl });
+        await navigator.share({ title: "JAI ENGINEERING WORKS PPMS TV Mode", url: tvUrl });
         return;
       } catch (error) {
         if ((error as Error).name === "AbortError") return;
@@ -108,9 +108,9 @@ export function MobileProductionDashboard({
     <div className="mobile-app-shell md:hidden">
       <header className="mobile-topbar">
         <div className="flex min-w-0 items-center gap-3">
-          <img src={logoAsset.url} alt="Phorotech Surfin India" className="size-11 shrink-0 rounded-md bg-background object-contain p-0.5" />
+          <img src={logoAsset.url} alt="JAI ENGINEERING WORKS" className="size-11 shrink-0 rounded-md bg-background object-contain p-0.5" />
           <div className="min-w-0">
-            <p className="truncate text-sm font-extrabold text-foreground">PHOROTECH SURFIN INDIA</p>
+            <p className="truncate text-sm font-extrabold text-foreground">JAI ENGINEERING WORKS</p>
             <p className="truncate text-xs font-semibold text-mobile-accent">Production Monitoring System</p>
           </div>
         </div>

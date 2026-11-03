@@ -12,10 +12,10 @@ import { exportDowntimePDF, exportDowntimeExcel } from "@/lib/downtime-export";
 
 export const Route = createFileRoute("/_authenticated/downtime")({
   head: () => ({ meta: [
-    { title: "Downtime Management · Phorotech" },
-    { name: "description", content: "Maintenance incidents and downtime records at Phorotech ED Plant." },
-    { property: "og:title", content: "Downtime Management · Phorotech" },
-    { property: "og:description", content: "Maintenance incidents and downtime records at Phorotech ED Plant." },
+    { title: "Downtime Management · JAI ENGINEERING WORKS" },
+    { name: "description", content: "Maintenance incidents and downtime records at JAI ENGINEERING WORKS." },
+    { property: "og:title", content: "Downtime Management · JAI ENGINEERING WORKS" },
+    { property: "og:description", content: "Maintenance incidents and downtime records at JAI ENGINEERING WORKS." },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary" },
     { name: "robots", content: "noindex" },
@@ -105,7 +105,7 @@ function DowntimePage() {
 
   return <main className="relative z-10 mx-auto max-w-7xl px-3 sm:px-6 py-5 space-y-5">
     <header className="flex flex-wrap items-center justify-between gap-4 border-b border-border pb-5">
-      <div><Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary"><ArrowLeft className="size-4" /> Dashboard</Link><h1 className="display gold-text mt-2 text-3xl font-bold">Downtime Management</h1><p className="text-sm text-muted-foreground">Phorotech Surfin India · ED Plant</p></div>
+      <div><Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary"><ArrowLeft className="size-4" /> Dashboard</Link><h1 className="display gold-text mt-2 text-3xl font-bold">Downtime Management</h1><p className="text-sm text-muted-foreground">JAI ENGINEERING WORKS · Unit-1 - Nazarathpet</p></div>
       <Button variant="outline" onClick={() => void reload()} disabled={loading} title="Refresh records"><RefreshCw className="size-4" /> Refresh</Button>
     </header>
     <nav className="flex gap-1 overflow-x-auto border-b border-border pb-2" aria-label="Downtime views">

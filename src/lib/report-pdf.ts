@@ -62,11 +62,11 @@ export async function generateReportPDF(
     doc.setTextColor(...GOLD);
     doc.setFont("helvetica", "bold");
     doc.setFontSize(15);
-    doc.text("PHOROTECH SURFIN INDIA PVT LTD", pageW / 2, 32, { align: "center" });
+    doc.text("JAI ENGINEERING WORKS", pageW / 2, 32, { align: "center" });
     doc.setFont("helvetica", "normal");
     doc.setFontSize(9);
     doc.setTextColor(80, 80, 80);
-    doc.text("Plant-II  |  ED Plant  |  Irungattukottai", pageW / 2, 50, { align: "center" });
+    doc.text("Unit-1 - Nazarathpet", pageW / 2, 50, { align: "center" });
     doc.setDrawColor(...GOLD);
     doc.setLineWidth(1);
     doc.line(0, 74, pageW, 74);

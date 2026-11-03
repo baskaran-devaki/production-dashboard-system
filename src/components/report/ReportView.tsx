@@ -191,13 +191,13 @@ export function ReportView({
 function Header() {
   return (
     <div className="flex items-center gap-3 border-b-2 border-[#b08922] pb-3">
-      <img src={logoAsset.url} alt="Phorotech Surfin India logo" className="h-12 w-12 object-contain" />
+      <img src={logoAsset.url} alt="JAI ENGINEERING WORKS logo" className="h-12 w-12 object-contain" />
       <div className="flex-1 text-center">
         <div className="text-base font-extrabold tracking-wide text-[#7a5c00]">
-          PHOROTECH SURFIN INDIA PVT LTD
+          JAI ENGINEERING WORKS
         </div>
         <div className="text-[11px] tracking-widest text-gray-700">
-          Plant-II | ED Plant | Irungattukottai
+          Unit-1 - Nazarathpet
         </div>
       </div>
       <div className="h-12 w-12" />

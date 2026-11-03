@@ -14,7 +14,7 @@ const logoAsset = { url: logoUrl };
 export const Route = createFileRoute("/tv")({
   ssr: false,
   component: TvDisplay,
-  head: () => ({ meta: [{ title: "Phorotech TV Display · Live Production" }] }),
+  head: () => ({ meta: [{ title: "JAI ENGINEERING WORKS TV Display · Live Production" }] }),
 });
 
 function TvDisplay() {
@@ -167,10 +167,10 @@ const MetricCard = ({
           </div>
           <div className="min-w-0">
             <h1 className={`font-[family-name:var(--font-display)] title-text font-extrabold tracking-wide leading-tight truncate ${F.title}`}>
-              PHOROTECH SURFIN INDIA PVT LTD
+              JAI ENGINEERING WORKS
             </h1>
             <p className={`text-[color:var(--cyan)] tracking-[0.2em] uppercase font-bold truncate ${F.subtitle}`}>
-              Plant II · ED Plant · Irungattukottai
+              Unit-1 - Nazarathpet
             </p>
           </div>
         </div>

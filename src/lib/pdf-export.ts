@@ -4,8 +4,8 @@ import * as XLSX from "xlsx";
 import { SHIFTS, ALL_SHIFTS, sumLoads, highestOfMonth, formatIndianDate, monthKey, monthName, type ProductionEntry, type ShiftNum } from "./production";
 
 const COMPANY = [
-  "PHOROTECH SURFIN INDIA PVT LTD",
-  "PLANT - II  •  ED PLANT  •  IRUNGATTUKOTTAI",
+  "JAI ENGINEERING WORKS",
+  "UNIT-1 - NAZARATHPET",
 ];
 
 export function downloadMonthlyPDF(entries: ProductionEntry[], mKey: string) {
@@ -88,7 +88,7 @@ export function downloadMonthlyPDF(entries: ProductionEntry[], mKey: string) {
     doc.text(`Page ${i} / ${pageCount}`, pageW - 40, h - 20, { align: "right" });
   }
 
-  doc.save(`Phorotech-Production-${mKey}.pdf`);
+  doc.save(`JAI-Engineering-Production-${mKey}.pdf`);
 }
 
 export function downloadMonthlyExcel(entries: ProductionEntry[], mKey: string) {
@@ -103,5 +103,5 @@ export function downloadMonthlyExcel(entries: ProductionEntry[], mKey: string) {
   const ws = XLSX.utils.json_to_sheet(rows);
   const wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, "Production");
-  XLSX.writeFile(wb, `Phorotech-Production-${mKey}.xlsx`);
+  XLSX.writeFile(wb, `JAI-Engineering-Production-${mKey}.xlsx`);
 }

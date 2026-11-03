@@ -7,7 +7,7 @@ import { KeyRound, Loader2 } from "lucide-react";
 export const Route = createFileRoute("/reset-password")({
   head: () => ({
     meta: [
-      { title: "Reset Password · Phorotech" },
+      { title: "Reset Password · JAI ENGINEERING WORKS" },
       { name: "robots", content: "noindex" },
     ],
   }),

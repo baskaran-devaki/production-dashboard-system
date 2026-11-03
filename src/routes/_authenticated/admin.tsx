@@ -11,7 +11,7 @@ import { ArrowLeft, LogOut, Plus, Pencil, Trash2, Save, X, Search, Filter, Loade
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
     meta: [
-      { title: "Admin Panel · Phorotech Production" },
+      { title: "Admin Panel · JAI ENGINEERING WORKS" },
       { name: "robots", content: "noindex" },
     ],
   }),
@@ -153,7 +153,7 @@ function AdminPanel() {
       <header className="glass-gold rounded-3xl p-5 sm:p-6 fade-up grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
         <div className="min-w-0">
           <div className="text-[10px] uppercase tracking-[0.4em] text-[color:var(--gold-light)]">Production Admin</div>
-          <h1 className="display gold-text text-2xl sm:text-3xl truncate">Phorotech ED Plant</h1>
+          <h1 className="display gold-text text-2xl sm:text-3xl truncate">JAI ENGINEERING WORKS</h1>
           <p className="text-xs text-[color:var(--muted-foreground)] truncate">Signed in as {user?.email}</p>
         </div>
         <div className="flex items-center gap-2">
