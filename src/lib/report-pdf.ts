@@ -1,9 +1,11 @@
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { ALL_SHIFTS, SHIFTS, formatDMY, type ShiftNum } from "./production";
-import type { ReportData } from "./report";
+import { SUNDAY_TARGET, WEEKDAY_TARGET, type ReportData } from "./report";
 import logoUrl from "@/assets/phorotech-logo.jpeg";
 const logoAsset = { url: logoUrl };
+
+const PER_SHIFT_TARGET = Math.round(WEEKDAY_TARGET / 3);
 
 const GOLD: [number, number, number] = [176, 137, 34];
 const DARK: [number, number, number] = [24, 24, 24];
@@ -39,10 +41,10 @@ async function loadLogo(): Promise<string | null> {
   }
 }
 
-export async function generateReportPDF(
+export async function buildReportPDF(
   report: ReportData,
   withHourly: boolean,
-) {
+): Promise<Blob> {
   const doc = new jsPDF({ orientation: "portrait", unit: "pt", format: "a4" });
   const pageW = doc.internal.pageSize.getWidth();
   const pageH = doc.internal.pageSize.getHeight();
@@ -147,6 +149,22 @@ export async function generateReportPDF(
     body: [
       ["Date", formatDMY(report.highest.date)],
       ["Total Loads", String(report.highest.loads)],
+    ],
+    margin: { left: M, right: M },
+  });
+  y = (doc as unknown as { lastAutoTable: { finalY: number } }).lastAutoTable.finalY + 16;
+
+  autoTable(doc, {
+    startY: y,
+    head: [["Target Details", ""]],
+    theme: "grid",
+    headStyles: { fillColor: HEAD_BG, textColor: [40, 40, 40], lineColor: [200, 200, 200], lineWidth: 0.5, fontStyle: "bold", fontSize: 9.5 },
+    styles: { fontSize: 9.5, cellPadding: 5 },
+    columnStyles: { 0: { cellWidth: 170 } },
+    body: [
+      ["Per Shift Target", `${PER_SHIFT_TARGET} Loads`],
+      ["Per Day Target", `${WEEKDAY_TARGET} Loads`],
+      ["Sunday Production Target", `${SUNDAY_TARGET} Loads`],
     ],
     margin: { left: M, right: M },
   });
@@ -278,6 +296,11 @@ export async function generateReportPDF(
     drawFooter(i, total);
   }
 
+  return doc.output("blob");
+}
+
+export async function generateReportPDF(report: ReportData, withHourly: boolean) {
+  const blob = await buildReportPDF(report, withHourly);
   const { downloadBlob } = await import("./download-file");
-  downloadBlob(doc.output("blob"), `PPMS-Production-Report-${report.from}_to_${report.to}.pdf`);
+  downloadBlob(blob, `PPMS-Production-Report-${report.from}_to_${report.to}.pdf`);
 }
