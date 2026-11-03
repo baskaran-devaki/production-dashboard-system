@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import logoUrl from "@/assets/phorotech-logo.jpeg";
-const logoAsset = { url: logoUrl };
 
 export function SplashScreen() {
   const [phase, setPhase] = useState<"show" | "fade" | "gone">("show");
@@ -15,9 +13,6 @@ export function SplashScreen() {
 
   return (
     <div className={`splash-screen ${phase === "fade" ? "splash-fade" : ""}`} role="status" aria-label="Loading PPMS">
-      <div className="splash-logo-wrap">
-        <img src={logoAsset.url} alt="Phorotech Surfin India" className="splash-logo" />
-      </div>
       <p className="splash-title">PPMS</p>
       <p className="splash-subtitle">Production Performance Monitoring System</p>
       <div className="splash-bar"><span /></div>
