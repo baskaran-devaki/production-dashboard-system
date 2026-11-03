@@ -1,7 +1,5 @@
 import { ALL_SHIFTS, SHIFTS, formatDMY } from "@/lib/production";
 import type { ReportData } from "@/lib/report";
-import logoUrl from "@/assets/phorotech-logo.jpeg";
-const logoAsset = { url: logoUrl };
 import { X } from "lucide-react";
 
 export function ReportView({
@@ -190,9 +188,7 @@ export function ReportView({
 
 function Header() {
   return (
-    <div className="flex items-center gap-3 border-b-2 border-[#b08922] pb-3">
-      <img src={logoAsset.url} alt="Phorotech Surfin India logo" className="h-12 w-12 object-contain" />
-      <div className="flex-1 text-center">
+      <div className="text-center border-b-2 border-[#b08922] pb-3">
         <div className="text-base font-extrabold tracking-wide text-[#7a5c00]">
           PHOROTECH SURFIN INDIA PVT LTD
         </div>
@@ -200,8 +196,7 @@ function Header() {
           Plant-II | ED Plant | Irungattukottai
         </div>
       </div>
-      <div className="h-12 w-12" />
-    </div>
+
   );
 }
 

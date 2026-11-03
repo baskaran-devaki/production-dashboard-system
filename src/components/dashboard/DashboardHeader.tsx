@@ -4,8 +4,6 @@ import { Link } from "@tanstack/react-router";
 import { LogIn, Shield, Tv, Crown } from "lucide-react";
 import { ProductionModeBadge } from "@/components/dashboard/ProductionModeControl";
 import { useProductionMode } from "@/hooks/useProductionMode";
-import logoUrl from "@/assets/phorotech-logo.jpeg";
-const logoAsset = { url: logoUrl };
 
 export function DashboardHeader({ isAdmin, isSignedIn, isSuperAdmin = false }: { isAdmin: boolean; isSignedIn: boolean; isSuperAdmin?: boolean }) {
   const [now, setNow] = useState<Date | null>(null);
@@ -23,10 +21,8 @@ export function DashboardHeader({ isAdmin, isSignedIn, isSuperAdmin = false }: {
       <div className="glass-gold rounded-3xl p-6 md:p-8">
         <div className="grid grid-cols-[minmax(0,1fr)_auto] gap-4 items-start">
           <div className="min-w-0 flex items-start gap-4">
-            <div className="shrink-0 h-16 w-16 sm:h-20 sm:w-20 rounded-2xl overflow-hidden bg-white p-1.5 border border-[oklch(0.78_0.14_82/30%)]">
-              <img src={logoAsset.url} alt="jai engineering works" className="h-full w-full object-contain" />
-            </div>
             <div className="min-w-0">
+
               <h1 className="font-[family-name:var(--font-display)] title-text text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-wide">
                 JAI ENGINEERING WORKS
               </h1>
