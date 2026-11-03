@@ -254,7 +254,7 @@ export function ReportDialog({
               <button
                 onClick={handleExcel}
                 disabled={busy !== null}
-                className="rounded-xl border border-[color:var(--border)] px-3 py-2 text-sm inline-flex items-center justify-center gap-2 hover:bg-[oklch(0.78_0.14_82/10%)] transition disabled:opacity-50 hidden sm:inline-flex"
+                className="text-sm items-center justify-center gap-2 disabled:opacity-50 hidden sm:inline-flex rounded-xl border border-[color:var(--border)] px-3 py-2 hover:bg-[oklch(0.78_0.14_82/10%)] transition"
               >
                 {busy === "excel" ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
@@ -266,7 +266,7 @@ export function ReportDialog({
               <button
                 onClick={handlePdf}
                 disabled={busy !== null}
-                className="btn-gold rounded-xl px-3 py-2 text-sm inline-flex items-center justify-center gap-2 disabled:opacity-50 hidden sm:inline-flex"
+                className="btn-gold text-sm items-center justify-center gap-2 disabled:opacity-50 hidden sm:inline-flex rounded-xl px-3 py-2"
               >
                 {busy === "pdf" ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
